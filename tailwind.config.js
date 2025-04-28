@@ -13,6 +13,11 @@ export default {
       colors: {
         'custom-orange': '#fb6b35',
         'custom-light-orange': '#FAE1CB',
+        'back': '#FFFDF6',
+        'title': '#5f3919',
+        'blue':'#C4D5FB'
+
+
       },
     }
   },
