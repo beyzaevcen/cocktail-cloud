@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 
 const goToSearch = () => {
-  router.push('/search');
+  router.push('/SearchCocktail');
 };
 </script>
 

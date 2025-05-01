@@ -1,5 +1,18 @@
 <script setup>
 import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+
+// Use the router
+const router = useRouter();
+
+const showDetails = (cocktail) => {
+  // Önceki alert yerine router kullanarak yönlendirme yapıyoruz
+  router.push({ 
+    name: 'CocktailDetail', 
+    params: { id: cocktail.idDrink },
+    state: { cocktailData: cocktail }
+  });
+};
 
 const allCocktails = ref([]);
 const loading = ref(true);
@@ -38,11 +51,7 @@ onMounted(() => {
   fetchAllCocktails();
 });
 
-// Show cocktail details
-const showDetails = (cocktail) => {
-  // Here you could redirect to a detail page or open a modal
-  alert(`Details for ${cocktail.strDrink} will be shown`);
-};
+
 
 // Clean up and prepare ingredients list
 const getIngredients = (cocktail) => {
@@ -123,7 +132,7 @@ const groupedCocktails = () => {
             <!-- Cocktail info (right side) -->
             <div class="w-2/3 p-4">
               <div class="flex justify-between items-start mb-2">
-                <h3 class="text-lg font-bold text-gray-800 truncate">{{ cocktail.strDrink }}</h3>
+                <h3 class="text-lg font-bold text-title truncate">{{ cocktail.strDrink }}</h3>
                 <span 
                   class="px-2 py-1 text-xs rounded-full"
                   :class="cocktail.strAlcoholic === 'Alcoholic' ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'"
@@ -142,7 +151,7 @@ const groupedCocktails = () => {
               <!-- Detail button -->
               <button 
                 @click="showDetails(cocktail)"
-                class="w-full py-2 bg-blue-500 text-white rounded-md hover:bg-orange-500 transition-colors duration-300 transform hover:scale-105 shadow-md"
+                class="w-full py-2 bg-blue text-title rounded-md hover:bg-custom-orange transition-colors duration-300 transform hover:scale-105 shadow-md"
               >
                 View Details
               </button>
@@ -150,8 +159,7 @@ const groupedCocktails = () => {
           </div>
         </div>
       </div>
-      
-
+    
     </div>
   </div>
 </template>
