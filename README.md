@@ -41,10 +41,6 @@ yarn dev
 
 The application will be running at: `http://localhost:5173/`
 
-
-## License
-MIT
-
 ---
 
-Created with ❤️ by [Beyza Evcen]
+Created with ❤️ by Beyza Evcen
