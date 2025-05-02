@@ -43,7 +43,11 @@ onMounted(() => {
 });
 
 const goBack = () => {
-  router.go(-1); 
+  if (route.query.from) {
+    router.push({ name: route.query.from });
+  } else {
+    router.go(-1);
+  }
 };
 
 const getIngredients = () => {
