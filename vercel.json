@@ -1,20 +1,8 @@
 {
-    "cleanUrls": true,
     "rewrites": [
       {
-        "source": "/cocktail/:id",
+        "source": "/:path*",
         "destination": "/index.html"
-      },
-      {
-        "source": "/(.*)",
-        "destination": "/index.html"
-      }
-    ],
-    "redirects": [
-      {
-        "source": "/cocktail/:id",
-        "destination": "/index.html",
-        "permanent": false
       }
     ]
   }
