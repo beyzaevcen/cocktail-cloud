@@ -24,8 +24,7 @@ const navigateToCocktails = () => {
       <div class="w-1/2 p-10 flex flex-col justify-center">
         <h1 class="text-4xl font-bold mb-4 text-title">Welcome to Cocktail Cloud</h1>
         <p class="text-lg text-title mb-6">
-          Discover the most delicious cocktail recipes, save your favorites, and create your own special drinks.
-          Are you ready to embark on a new journey in the world of cocktails?
+          Discover the most delicious cocktail recipes and learn about unique flavor combinations. Are you ready to embark on a new journey in the world of cocktails ?
         </p>
         <button 
           @click="navigateToCocktails" 

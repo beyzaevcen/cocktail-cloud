@@ -2,11 +2,9 @@
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 
-// Use the router
 const router = useRouter();
 
 const showDetails = (cocktail) => {
-  // Önceki alert yerine router kullanarak yönlendirme yapıyoruz
   router.push({ 
     name: 'CocktailDetail', 
     params: { id: cocktail.idDrink },
@@ -17,9 +15,8 @@ const showDetails = (cocktail) => {
 const allCocktails = ref([]);
 const loading = ref(true);
 const error = ref(null);
-const letters = ['m', 's', 'c']; // Only the first 3 letters
+const letters = ['p', 's', 'c']; 
 
-// Fetch cocktails for the selected letters
 const fetchAllCocktails = async () => {
   loading.value = true;
   error.value = null;
@@ -31,7 +28,6 @@ const fetchAllCocktails = async () => {
       const data = await response.json();
       
       if (data.drinks && data.drinks.length > 0) {
-        // Get up to 2 cocktails per letter
         const cocktailsForLetter = data.drinks.slice(0, 2);
         results.push(...cocktailsForLetter);
       }
@@ -46,14 +42,12 @@ const fetchAllCocktails = async () => {
   }
 };
 
-// Load all cocktails when page loads
 onMounted(() => {
   fetchAllCocktails();
 });
 
 
 
-// Clean up and prepare ingredients list
 const getIngredients = (cocktail) => {
   const ingredients = [];
   
@@ -72,14 +66,13 @@ const getIngredients = (cocktail) => {
   return ingredients;
 };
 
-// Group cocktails by letter
 const groupedCocktails = () => {
   const grouped = {};
   
   for (const letter of letters) {
     const cocktailsWithLetter = allCocktails.value.filter(cocktail => 
       cocktail.strDrink.toLowerCase().startsWith(letter)
-    ).slice(0, 2); // Max 2 cocktails per letter
+    ).slice(0, 2); 
     
     if (cocktailsWithLetter.length > 0) {
       grouped[letter] = cocktailsWithLetter;
@@ -92,19 +85,16 @@ const groupedCocktails = () => {
 
 <template>
   <div class="cocktails-container bg-back min-h-screen py-10 px-4">
-    <h1 class="text-3xl font-bold text-center mb-8 text-title">Cocktail Collection</h1>
+    <h1 class="text-3xl font-bold text-center mb-8 text-title">Cocktail Cloud</h1>
     
-    <!-- Loading state -->
     <div v-if="loading" class="flex justify-center py-20">
       <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-orange-500"></div>
     </div>
     
-    <!-- Error state -->
     <div v-else-if="error" class="text-center text-red-500 py-10">
       {{ error }}
     </div>
     
-    <!-- No results state -->
     <div v-else-if="allCocktails.length === 0" class="text-center py-10">
       <p class="text-lg text-gray-600">No cocktails found.</p>
     </div>
@@ -119,7 +109,6 @@ const groupedCocktails = () => {
             class="cocktail-card bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1 hover:scale-102 flex flex-row border border-gray-200"
             style="box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);"
           >
-            <!-- Cocktail image (left side) -->
             <div class="w-1/3">
               <img 
                 :src="cocktail.strDrinkThumb" 

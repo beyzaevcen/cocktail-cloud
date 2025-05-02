@@ -16,37 +16,28 @@ const cocktail = ref(null);
 const loading = ref(true);
 const error = ref(null);
 
-// Kokteyl detaylarını API'den çekme
 const fetchCocktailDetails = async () => {
   loading.value = true;
   error.value = null;
   
   try {
-    // İlk olarak router state'ten gelen veriyi kontrol ediyoruz
-    if (router.currentRoute.value.state && router.currentRoute.value.state.cocktailData) {
-      cocktail.value = router.currentRoute.value.state.cocktailData;
-      loading.value = false;
-      return;
-    }
     
-    // State'te veri yoksa API'den çekiyoruz
     const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${props.id}`);
     const data = await response.json();
     
     if (data.drinks && data.drinks.length > 0) {
       cocktail.value = data.drinks[0];
     } else {
-      error.value = "Kokteyl bulunamadı.";
+      error.value = "No cocktail found.";
     }
   } catch (err) {
-    error.value = "Kokteyl detayları yüklenirken bir hata oluştu.";
+    error.value = "Something wrong";
     console.error("API hatası:", err);
   } finally {
     loading.value = false;
   }
 };
 
-// Bileşen yüklendiğinde kokteyl detaylarını çek
 onMounted(() => {
   fetchCocktailDetails();
 });
@@ -77,11 +68,9 @@ const getIngredients = () => {
 </script>
 
 <template>
-  <!-- Overflow-auto ana body'de değil, app-content'te olmalı -->
   <div class="app-container">
     <div class="app-content overflow-y-auto">
       <div class="cocktail-detail bg-back py-10 px-4">
-        <!-- Geri dönüş butonu -->
         <button 
           @click="goBack"
           class="mb-6 px-4 py-2 flex items-center text-title bg-blue hover:bg-custom-orange transition-colors rounded-md shadow-md"
@@ -89,17 +78,14 @@ const getIngredients = () => {
           <span class="mr-2">←</span> Back to cocktail cloud
         </button>
         
-        <!-- Yükleniyor durumu -->
         <div v-if="loading" class="flex justify-center py-20">
           <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-orange-500"></div>
         </div>
         
-        <!-- Hata durumu -->
         <div v-else-if="error" class="text-center text-red-500 py-10">
           {{ error }}
         </div>
         
-        <!-- Kokteyl bulunamadı -->
         <div v-else-if="!cocktail" class="text-center py-10">
           <p class="text-lg text-gray-600">Kokteyl bilgileri bulunamadı.</p>
         </div>
@@ -152,7 +138,6 @@ const getIngredients = () => {
       
         </div>
         
-        <!-- Extra boşluk ekle ki scroll'un etkisi görünsün -->
         <div class="h-20"></div>
       </div>
     </div>
@@ -171,10 +156,9 @@ const getIngredients = () => {
 .app-content {
   height: 100%;
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch; /* iOS için daha yumuşak scroll */
+  -webkit-overflow-scrolling: touch; 
 }
 
-/* Animasyonlar */
 .animate-spin {
   animation: spin 1s linear infinite;
 }
@@ -188,12 +172,10 @@ const getIngredients = () => {
   }
 }
 
-/* Kokteyl kartı düzenlemeler */
 .cocktail-card {
   transition: all 0.3s ease;
 }
 
-/* Mobil responsive düzenlemeler */
 @media (max-width: 768px) {
   .md\:flex-row {
     flex-direction: column;

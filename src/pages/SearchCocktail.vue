@@ -155,7 +155,6 @@ const goToHome = () => {
                   />
                   <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
                     <p class="text-white font-bold">{{ cocktail.strDrink }}</p>
-                    <p class="text-gray-300 text-sm">{{ cocktail.strCategory }}</p>
                   </div>
                 </div>
                 
