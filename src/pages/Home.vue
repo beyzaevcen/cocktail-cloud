@@ -15,10 +15,10 @@ const navigateToCocktails = () => {
     <div class="flex flex-row w-full">
       <div class="w-1/2">
         <img
-          src="/Users/beyzaevcen/cocktail-cloud/src/assets/cocktail.webp"
-          alt="Description"
-          class="w-full h-full object-cover rounded-lg"
-        />
+  src="/assets/cocktail.webp"
+  alt="Description"
+  class="w-full h-full object-cover rounded-lg"
+/>
       </div>
           
       <div class="w-1/2 p-10 flex flex-col justify-center">
