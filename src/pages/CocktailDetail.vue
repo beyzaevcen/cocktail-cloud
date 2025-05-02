@@ -44,7 +44,7 @@ onMounted(() => {
 
 const goBack = () => {
   if (route.query.from) {
-    router.push({ name: route.query.from });
+    router.push('/' + route.query.from);
   } else {
     router.go(-1);
   }
