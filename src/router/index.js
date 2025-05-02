@@ -31,7 +31,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory("http://localhost:5173/"),
+  history: createWebHistory(),
   routes
 });
 

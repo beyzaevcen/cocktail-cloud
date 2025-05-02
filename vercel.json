@@ -1,7 +1,8 @@
 {
+    "cleanUrls": true,
     "rewrites": [
       {
-        "source": "/cocktail/:id",
+        "source": "/(.*)",
         "destination": "/index.html"
       }
     ]
