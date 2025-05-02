@@ -43,11 +43,8 @@ onMounted(() => {
 });
 
 const goBack = () => {
-  if (route.query.from) {
-    router.push('/' + route.query.from);
-  } else {
-    router.go(-1);
-  }
+  window.history.back();
+
 };
 
 const getIngredients = () => {
