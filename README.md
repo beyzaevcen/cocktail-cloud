@@ -25,7 +25,7 @@ Cocktail Cloud is a modern web application designed for cocktail enthusiasts who
 ### Setting Up Local Development Environment
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/cocktail-cloud.git
+git clone https://github.com/beyzaevcen/cocktail-cloud.git
 cd cocktail-cloud
 
 # Install dependencies
@@ -41,49 +41,10 @@ yarn dev
 
 The application will be running at: `http://localhost:5173/`
 
-### Production Deployment
-```bash
-# Build for production
-npm run build
-# or
-yarn build
-```
-
-## Project Structure
-```
-cocktail-cloud/
-├── public/            # Static files
-├── src/
-│   ├── assets/        # Images and styles
-│   ├── components/    # Vue components
-│   ├── pages/         # Page components
-│   ├── router/        # Vue router configuration
-│   ├── App.vue        # Main application component
-│   └── main.js        # Application entry point
-├── .gitignore
-├── index.html
-├── package.json
-├── README.md
-└── vite.config.js
-```
-
-## Known Issues and Solutions
-- **Vercel Deployment Error**: When referencing image files, use relative paths or imports instead of absolute paths.
-  - ❌ `src="/Users/username/cocktail-cloud/src/assets/cocktail.webp"` (Wrong)
-  - ✅ `import cocktailImage from '@/assets/cocktail.webp'` (Correct) or
-  - ✅ `src="/assets/cocktail.webp"` (Correct - for files in the public folder)
-
-## Contributing
-Contributions are welcome! Please:
-1. Fork this repository
-2. Create a feature branch (`git checkout -b new-feature`)
-3. Commit your changes (`git commit -m 'New feature: Description'`)
-4. Push to the branch (`git push origin new-feature`)
-5. Open a Pull Request
 
 ## License
 MIT
 
 ---
 
-Created with ❤️ by [Your Name]
+Created with ❤️ by [Beyza Evcen]
