@@ -1,0 +1,9 @@
+{
+    "rewrites": [
+      {
+        "source": "/cocktail/:id",
+        "destination": "/index.html"
+      }
+    ]
+  }
+  
